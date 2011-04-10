@@ -167,7 +167,7 @@ this.makeHtml = function(text) {
     if (typeof(GitHub) == "undefined" || typeof(GitHub.nameWithOwner) == "undefined") {return wholeMatch;}
     var left = text.slice(0, matchIndex), right = text.slice(matchIndex)
     if (left.match(/@$/) || (left.match(/<[^>]+$/) && right.match(/^[^>]*>/))) {return wholeMatch;}
-    return "<a href='http://github.com/" + GitHub.nameWithOwner + "/commit/" + wholeMatch + "'>" + wholeMatch.substring(0,7) + "</a>";
+    return "<a href='https://github.com/" + GitHub.nameWithOwner + "/commit/" + wholeMatch + "'>" + wholeMatch.substring(0,7) + "</a>";
   });
 
   // ** GFM ** Auto-link user@sha1 if GitHub.nameWithOwner is defined
@@ -176,12 +176,12 @@ this.makeHtml = function(text) {
     GitHub.repoName = GitHub.repoName || _GetRepoName()
     var left = text.slice(0, matchIndex), right = text.slice(matchIndex)
     if (left.match(/\/$/) || (left.match(/<[^>]+$/) && right.match(/^[^>]*>/))) {return wholeMatch;}
-    return "<a href='http://github.com/" + username + "/" + GitHub.repoName + "/commit/" + sha + "'>" + username + "@" + sha.substring(0,7) + "</a>";
+    return "<a href='https://github.com/" + username + "/" + GitHub.repoName + "/commit/" + sha + "'>" + username + "@" + sha.substring(0,7) + "</a>";
   });
 
   // ** GFM ** Auto-link user/repo@sha1
   text = text.replace(/([a-z0-9_\-+=.]+\/[a-z0-9_\-+=.]+)@([a-f0-9]{40})/ig, function(wholeMatch,repo,sha){
-    return "<a href='http://github.com/" + repo + "/commit/" + sha + "'>" + repo + "@" + sha.substring(0,7) + "</a>";
+    return "<a href='https://github.com/" + repo + "/commit/" + sha + "'>" + repo + "@" + sha.substring(0,7) + "</a>";
   });
 
   // ** GFM ** Auto-link #issue if GitHub.nameWithOwner is defined
@@ -189,7 +189,7 @@ this.makeHtml = function(text) {
     if (typeof(GitHub) == "undefined" || typeof(GitHub.nameWithOwner) == "undefined") {return wholeMatch;}
     var left = text.slice(0, matchIndex), right = text.slice(matchIndex)
     if (left == "" || left.match(/[a-z0-9_\-+=.]$/) || (left.match(/<[^>]+$/) && right.match(/^[^>]*>/))) {return wholeMatch;}
-    return "<a href='http://github.com/" + GitHub.nameWithOwner + "/issues/#issue/" + issue + "'>" + wholeMatch + "</a>";
+    return "<a href='https://github.com/" + GitHub.nameWithOwner + "/issues/#issue/" + issue + "'>" + wholeMatch + "</a>";
   });
 
   // ** GFM ** Auto-link user#issue if GitHub.nameWithOwner is defined
@@ -198,12 +198,12 @@ this.makeHtml = function(text) {
     GitHub.repoName = GitHub.repoName || _GetRepoName()
     var left = text.slice(0, matchIndex), right = text.slice(matchIndex)
     if (left.match(/\/$/) || (left.match(/<[^>]+$/) && right.match(/^[^>]*>/))) {return wholeMatch;}
-    return "<a href='http://github.com/" + username + "/" + GitHub.repoName + "/issues/#issue/" + issue + "'>" + wholeMatch + "</a>";
+    return "<a href='https://github.com/" + username + "/" + GitHub.repoName + "/issues/#issue/" + issue + "'>" + wholeMatch + "</a>";
   });
 
   // ** GFM ** Auto-link user/repo#issue
   text = text.replace(/([a-z0-9_\-+=.]+\/[a-z0-9_\-+=.]+)#([0-9]+)/ig, function(wholeMatch,repo,issue){
-    return "<a href='http://github.com/" + repo + "/issues/#issue/" + issue + "'>" + wholeMatch + "</a>";
+    return "<a href='https://github.com/" + repo + "/issues/#issue/" + issue + "'>" + wholeMatch + "</a>";
   });
 
 	return text;
